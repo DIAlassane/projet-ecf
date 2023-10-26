@@ -1,4 +1,3 @@
-import React from 'react';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -8,13 +7,13 @@ function Cars() {
     const [cars, setCars] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:3002/addcar')
+        axios.get('http://localhost:4000/addcar')
         .then(result => setCars(result.data))
         .catch(err => console.log(err))
     }, [])
 
     const handleDelete = (id) => {
-        axios.delete('http://localhost:3002/addcar/'+id)
+        axios.delete('http://localhost:4000/addcar/'+id)
         .then(res => {
             console.log(res)
             window.location.reload()
@@ -46,7 +45,7 @@ function Cars() {
                 </thead>
                 <tbody>
                     {
-                    users.map((car) => {
+                    cars.map((car) => {
                         return (
                         <tr>
                             <td>{car.marque}</td>
@@ -60,8 +59,8 @@ function Cars() {
                             <td>{car.urlimg}</td>
                             <td>{car.urlimgban}</td>
                             <td>
-                                <Link to={`/updateUser/${user._id}`}>MAJ</Link>
-                                <button className='delete' onClick={(e) => handleDelete(user._id)}>
+                                <Link to={`/editcar/${car.car_id}`}>MAJ</Link>
+                                <button className='delete' onClick={(e) => handleDelete(car.car_id)}>
                                     Supprimer
                                 </button>
                             </td>
@@ -70,7 +69,7 @@ function Cars() {
                     }
                 </tbody>
             </table>
-            <Link to='/homeClient'>FrontUsers</Link>
+            <Link to='/homeClient'>HomeClient</Link>
         </div>
     </div>
   )

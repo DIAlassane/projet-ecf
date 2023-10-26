@@ -1,4 +1,3 @@
-import React from 'react';
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -63,11 +62,11 @@ function AddCar() {
             onChange={(e) => setNbporte(e.target.value)}/>
             <input type="text" placeholder='Type de carburant' 
             onChange={(e) => setCarburant(e.target.value)}/>
-            <input type="text" placeholder='URL' 
+            <input type="text" placeholder='URL image' 
             onChange={(e) => setUrlimg(e.target.value)}/>
-            <input type="text" placeholder='URL' 
+            <input type="text" placeholder='URL bannière' 
             onChange={(e) => setUrlimgban(e.target.value)}/>
-            <input type="text" placeholder='URL' 
+            <input type="text" placeholder='Couleur' 
             onChange={(e) => setCouleur(e.target.value)}/>
           </div>
             <div className="btncud">
