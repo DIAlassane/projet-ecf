@@ -6,6 +6,9 @@ import HomeClient from './client/HomeClient';
 import DetailCar from './client/DetailCar';
 import EditCar from './employee/EditCar';
 import DashBoard from './admin/DashBoard';
+import Users from './admin/Users';
+import CreateUser from './admin/CreateUser';
+import UpdateUser from './admin/UpdateUser';
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
         <Route path='/detailCar/:id' element={<DetailCar />} ></Route>
         <Route path='/editCar/:id' element={<EditCar />} ></Route>
         <Route path='/dashBoard' element={<DashBoard />} ></Route>
+        <Route path='/users' element={<Users />} ></Route>
+        <Route path='/createUser' element={<CreateUser />} ></Route>
+        <Route path='/updateUser/:id' element={<UpdateUser />} ></Route>
       </Routes>
       </BrowserRouter>
     </div>

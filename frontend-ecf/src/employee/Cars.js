@@ -22,7 +22,6 @@ function Cars() {
         .catch(errr => console.log(errr))
     }
 
-
   return (
     <div className='container'>
         <a className='btndash' href="/dashBoard">Dashboard</a>
