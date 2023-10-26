@@ -2,6 +2,7 @@
 const express = require('express'); 
 const cors = require('cors');
 const pool = require('./db');
+const bcrypt = require('bcrypt')
 
 // variable app qui utilise la lib d'express
 const app = express(); 
@@ -178,6 +179,53 @@ app.delete('/users/:id', async (req, res) => {
         res.status(500).send("Erreur serveur");
     }
 });
+
+// login //
+app.use(session({
+    secret: 'alassane',
+    credentials: true,
+    name: "sid",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        secure: process.env.ENVIRONMENT === "production" ? "true" : "auto",
+        httpOnly: true,
+        sameSite: process.env.ENVIRONMENT === "production" ? "none" : "lax",
+    }
+}))
+
+
+app.post('/users/login', async (req, res) => {
+    try {
+        const potentialLogin = await pool.query("SELECT email, password FROM connexion u WHERE u.email = $1", [req.body.email]);
+
+        if (potentialLogin.rowCount > 0) {
+            console.log(req.session)
+            // Utilisez une bibliothèque de hachage comme bcrypt pour comparer les mots de passe
+            const isSamePassword = bcrypt.compare(req.body.password, potentialLogin.rows[0].password);
+
+            if (isSamePassword) {
+                // Connexion réussie
+                req.session.users = {
+                    email: req.body.email,
+                    id: potentialLogin.rows[0].id,
+                };
+                res.json({ LoggedIn: true, status: "Logged in successfully" });
+            } else {
+                // Mauvais login
+                res.json({ LoggedIn: false, status: "Wrong email ? or password" });
+            }
+        } else {
+            // Aucun utilisateur trouvé avec cet email
+            res.json({ LoggedIn: false, status: "Wrong email or password" });
+        }
+    } catch (error) {
+        console.error("Erreur lors de la tentative de connexion :", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+    
+});
+
 
 
 app.listen(4000, () => {
