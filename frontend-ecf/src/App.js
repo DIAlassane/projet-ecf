@@ -9,6 +9,7 @@ import DashBoard from './admin/DashBoard';
 import Users from './admin/Users';
 import CreateUser from './admin/CreateUser';
 import UpdateUser from './admin/UpdateUser';
+import Login from './login/Login';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path='/users' element={<Users />} ></Route>
         <Route path='/createUser' element={<CreateUser />} ></Route>
         <Route path='/updateUser/:id' element={<UpdateUser />} ></Route>
+        <Route path='/login' element={<Login />} ></Route>
       </Routes>
       </BrowserRouter>
     </div>

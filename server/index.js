@@ -2,14 +2,18 @@
 const express = require('express'); 
 const cors = require('cors');
 const pool = require('./db');
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+const session = require('express-session');
+const bodyParser = require('body-parser');
 
 // variable app qui utilise la lib d'express
 const app = express(); 
+require("dotenv").config();
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use(bodyParser.json())
 
 // ROUTES //
 

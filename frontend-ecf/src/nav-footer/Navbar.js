@@ -13,7 +13,7 @@ function Navbar() {
                 <Link to='/' >Contact</Link>
                 <Link to='/' >A-propos</Link>
                 <Link to='/' >Services</Link>
-                <Link to='/Connexion' >Se connecter</Link>
+                <Link to='/login' >Se connecter</Link>
             </div>
         </div>
     </div>

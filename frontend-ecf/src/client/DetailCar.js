@@ -8,7 +8,7 @@ function DetailCar() {
     
     console.log(id)
     useEffect(() => {
-      axios.get(`http://localhost:4000/addar/${id}`)
+      axios.get(`http://localhost:4000/addcar/${id}`)
         .then((response) => {
           setCars(response.data);
         })
