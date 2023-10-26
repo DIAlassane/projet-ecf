@@ -5,6 +5,7 @@ import AddCar from './employee/AddCar';
 import HomeClient from './client/HomeClient';
 import DetailCar from './client/DetailCar';
 import EditCar from './employee/EditCar';
+import DashBoard from './admin/DashBoard';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/homeClient' element={<HomeClient />} ></Route>
         <Route path='/detailCar/:id' element={<DetailCar />} ></Route>
         <Route path='/editCar/:id' element={<EditCar />} ></Route>
+        <Route path='/dashBoard' element={<DashBoard />} ></Route>
       </Routes>
       </BrowserRouter>
     </div>
