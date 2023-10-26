@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.btndash {
+    background-color: #262526;
+    padding: .3rem;
+    color: white;
+    text-decoration: none;
+}
+
+.carlist {
+    border: 2px solid black;
+    padding: .5rem;
+}
+
+.btncarlist a {
+    background-color: #1cb21c;
+    padding: .3rem;
+    color: white;
+    text-decoration: none; 
+    border-radius: 2px;
+    margin: .5rem;
+}
+
+.carlist h2 {
+    padding: .5rem;
+}
+
+.btncarlist {
+    width: 30%;
+    margin-left: 35%;
+}
+
+.btnedit {
+    background-color: #e96411;
+    padding: .3rem;
+    color: white;
+    text-decoration: none; 
+    border-radius: 2px;
+}
+
+thead {
+    background-color: #D94350;
+}
+
+th,
+td {
+    padding: 0.3rem;
+    border: .5px solid black;
+    font-size: 0.7rem;
+}
+
+td:last-child {
+    border: none;
+    display: flex;
+}
+
+tr button {
+    background-color: #D94350;
+    padding: .3rem;
+    color: white;
+    text-decoration: none; 
+    border-radius: 2px;
+    border: none;
+    margin-left: .3rem;
+    cursor: pointer;
+}

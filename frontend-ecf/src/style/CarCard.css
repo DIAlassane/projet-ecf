@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.prix {
+    background-color: #D92322;
+    padding-top: 0.3rem;
+    padding-bottom: 1.5rem;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: -1rem;
+    color: white;
+    font-size: 1rem;
+}
+
+.prix h5 {
+    background-color: black;
+    padding: .2rem;
+    width: 20%;
+    margin-top: .3rem;
+}
+
+.card {
+    width: 430px;
+    height: 450px;
+    border-radius: 10px;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    height: 290px;
+}
+
+.mini-details-card {
+    background-color: #26252614;
+    padding: .5rem;
+    justify-content: left;
+    text-align: left;
+}

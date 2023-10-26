@@ -1,13 +1,15 @@
 import React from 'react'
 import Navbar from '../nav-footer/Navbar'
-import DetailCar from './DetailCar'
+import CarCard from './CarCard'
+
+import '../style/HomeClient.css'
 
 function HomeClient() {
   return (
     <div>
         <Navbar />
         <div className="container">
-            <DetailCar />
+                <CarCard />
         </div>
     </div>
   )

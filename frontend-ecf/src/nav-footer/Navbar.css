@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem;
+    background-color: #262526;
+}
+
+.navlinks a {
+    color: #F2F2F2;
+    text-decoration: none;
+    padding: 0.5rem;
+    transition: .3s ease-out step-end;
+}
+
+.navlinks a:hover {
+    border-bottom: 2px solid #D94350;
+}

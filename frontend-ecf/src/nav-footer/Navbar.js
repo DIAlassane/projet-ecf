@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Navbar.css'
 
 function Navbar() {
   return (
@@ -8,7 +9,7 @@ function Navbar() {
             <Link to='homeClient'><h2 className="logo">Garage V.Parrot</h2></Link>
             
             <div className="navlinks">
-                <Link to='/cars' >car dashbord</Link>
+                <Link to='/' >Dashbord</Link>
                 <Link to='/' >Contact</Link>
                 <Link to='/' >A-propos</Link>
                 <Link to='/' >Services</Link>

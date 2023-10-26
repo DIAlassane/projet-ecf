@@ -1,0 +1,35 @@
+.ajouter {
+    padding: 2rem;
+    margin-top: 23vh;
+}
+
+.ajouter a {
+    text-decoration: none;
+    color: white;
+    background-color: #262526;
+    padding: .5rem;
+}
+
+.formulaire {
+    background-color: #D9777F;
+    padding: 2rem;
+}
+
+.formulaire h2 {
+    padding: .5rem;
+    font-weight: 900;
+}
+
+.formulaire input {
+    padding: 0.4rem;
+    margin: .5rem;
+    border: .1rem solid #D92332;
+}
+
+.btncu {
+    background-color: #1cbd1cc7;
+    color: white;
+    padding: .3rem;
+    border: .1rem solid #D9777F;
+    border-radius: 5px;
+}

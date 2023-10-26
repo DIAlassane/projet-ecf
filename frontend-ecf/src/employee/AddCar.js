@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+
+import '../style/AddCar.css'
 
 function AddCar() {
     const [marque, setMarque] = useState()
@@ -40,6 +42,7 @@ function AddCar() {
   return (
     <div>
         <div className='ajouter'>
+            <Link to='/'>Retour</Link>
         <form className='formulaire' onSubmit={Submit} action="">
           <h2 className='titrecu'>Ajouter une voiture</h2>
 

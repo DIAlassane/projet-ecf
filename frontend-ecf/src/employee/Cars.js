@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import '../style/Cars.css'
 
 function Cars() {
     const [cars, setCars] = useState([])
@@ -23,11 +24,15 @@ function Cars() {
 
 
   return (
-    <div>
-                <a href="/dashboard">Dashboard</a>
+    <div className='container'>
+        <a className='btndash' href="/dashboard">Dashboard</a>
         <div className='carlist'>
             <h2>Liste de nos voitures</h2>
-            <Link to="/addcar" >Ajouter +</Link>
+            <div className="btncarlist">
+                <Link to="/addcar" >Ajouter +</Link>
+                <Link to='/homeClient'>HomeClient</Link>
+            </div>
+            
             <table>
                 <thead>
                     <tr>
@@ -59,7 +64,7 @@ function Cars() {
                             <td>{car.urlimg}</td>
                             <td>{car.urlimgban}</td>
                             <td>
-                                <Link to={`/editcar/${car.car_id}`}>MAJ</Link>
+                                <Link className='btnedit' to={`/editcar/${car.car_id}`}>MAJ</Link>
                                 <button className='delete' onClick={(e) => handleDelete(car.car_id)}>
                                     Supprimer
                                 </button>
@@ -69,7 +74,6 @@ function Cars() {
                     }
                 </tbody>
             </table>
-            <Link to='/homeClient'>HomeClient</Link>
         </div>
     </div>
   )
