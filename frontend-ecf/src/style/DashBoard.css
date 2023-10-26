@@ -1,0 +1,60 @@
+.headerdashboard {
+    width: 100%;
+    height: 40vh;
+    background-color: black;
+    color: white;
+}
+
+.headerdashboard h1 {
+    font-size: 13rem;
+    color: #D92332;
+}
+
+.logodashboard {
+    width: 24%;
+}
+
+.dashboardbas {
+    width: 100%;
+    height: 60vh;
+    background-color: #262526;
+    display: flex;
+    padding: 4rem;
+    justify-content: space-between;
+}
+
+.logodashboard .carsdashboard {
+    background: url(../assets/cars.png);
+    width: 100%;
+    height: 30vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.logodashboard .horairesdashboard {
+    background: url(../assets/Horaires.png);
+    width: 100%;
+    height: 30vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.logodashboard .servicesdashboard {
+    background: url(../assets/Service.png);
+    width: 100%;
+    height: 30vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.logodashboard .usersdashboard {
+    background: url(../assets/Users.png);
+    width: 100%;
+    height: 30vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
