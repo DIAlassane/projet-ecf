@@ -22,7 +22,6 @@ function Users() {
         .catch(errr => console.log(errr))
     }
 
-
   return (
     <div className='containeruser'>
         <a className='btndash' href="/dashBoard">Dashboard</a>
@@ -73,7 +72,6 @@ function Users() {
             </table>
         </div>
     </div>
-
   )
 }
 

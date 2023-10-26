@@ -10,6 +10,9 @@ import Users from './admin/Users';
 import CreateUser from './admin/CreateUser';
 import UpdateUser from './admin/UpdateUser';
 import Login from './login/Login';
+import Services from './admin/services/Services';
+import CreateService from './admin/services/CreateService';
+import UpdateService from './admin/services/UpdateService';
 
 function App() {
   return (
@@ -26,6 +29,9 @@ function App() {
         <Route path='/createUser' element={<CreateUser />} ></Route>
         <Route path='/updateUser/:id' element={<UpdateUser />} ></Route>
         <Route path='/login' element={<Login />} ></Route>
+        <Route path='/services' element={<Services />} ></Route>
+        <Route path='/createService' element={<CreateService />} ></Route>
+        <Route path='/updateService/:id' element={<UpdateService />} ></Route>
       </Routes>
       </BrowserRouter>
     </div>

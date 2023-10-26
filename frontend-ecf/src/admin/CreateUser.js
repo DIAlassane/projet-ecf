@@ -35,7 +35,6 @@ function CreateUser() {
     .catch(err => console.log(err))
   }
 
-
   return (
     <div>
         <div className='ajouter'>

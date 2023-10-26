@@ -1,0 +1,11 @@
+.servflex {
+    display: flex;
+}
+
+.imgservice {
+    width: 40%;
+}
+
+.imgservice img {
+    width: 100%;
+}

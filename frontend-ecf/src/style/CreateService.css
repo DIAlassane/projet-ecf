@@ -1,0 +1,36 @@
+.desc {
+    width: 60%;
+    margin-left: 20%;
+
+}
+
+.ajouterservice {
+    padding: 2rem;
+}
+
+.ajouterservice a {
+    text-decoration: none;
+    color: white;
+    background-color: #262526;
+    padding: .5rem;
+}
+
+
+.desc input {
+    width: 100%;
+    height: 50px;
+}
+
+.divquestion {
+    width: 70%;
+    margin-left: 15%;
+}
+
+.divquestion input {
+    display: block;
+    width: 100%;
+}
+
+.divquestion input:last-child {
+    height: 150px;
+}

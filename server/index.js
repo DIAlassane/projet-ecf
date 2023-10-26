@@ -232,6 +232,101 @@ app.post('/users/login', async (req, res) => {
 
 
 
+
+
+
+
+
+
+// ------------------------------ SERVICES -------------------------------- //
+// ROUTES //
+
+// create //add// a service
+app.post('/services', async (req, res) => {
+    try {
+        const { 
+            img,
+            title ,
+            prix,
+            decriptioncard,
+            question,
+            reponse,
+            question2,
+            reponse2,
+            question3,
+            reponse3 } = req.body;
+
+        const service = await pool.query(
+            "INSERT INTO services (  img, title , prix, decriptioncard, question, reponse,  question2, reponse2, question3, reponse3) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *",
+            [  img, title , prix, decriptioncard, question, reponse,  question2, reponse2, question3, reponse3]
+         );
+
+         res.json(service.rows[0]);
+    } catch (err) {
+        console.log(err.message);
+    }
+})
+
+// get all the services
+app.get('/services', async (req, res) => {
+    try {
+        const service = await pool.query("SELECT * FROM services");
+        res.json(service.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+});
+
+// get a service
+app.get('/services/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const service = await pool.query("SELECT * FROM services WHERE service_id = $1", [id])
+
+        res.json(service.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+    }
+})
+
+// update the services
+app.put('/services/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { 
+            img,
+            title ,
+            prix,
+            decriptioncard,
+            question,
+            reponse,
+            question2,
+            reponse2,
+            question3,
+            reponse3  } = req.body;
+        const updateService = await pool.query("UPDATE services SET img = $1, title = $2, prix = $3, descriptioncard = $4, question = $5, reponse = $6, question2 = $7, reponse2 = $8, question3 = $9, reponse3 = $10 WHERE service_id = $11", [ img, title , prix, decriptioncard, question, reponse,  question2, reponse2, question3, reponse3, id]);
+
+        res.json("service is updated");
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Erreur serveur");
+    }
+});
+
+// delete a service
+app.delete('/services/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deleteService = await pool.query("DELETE FROM services WHERE service_id = $1", [id]);
+
+        res.json("service was deleted");
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Erreur serveur");
+    }
+});
+
+
 app.listen(4000, () => {
     console.log("server is running on port 4000")
 }) 

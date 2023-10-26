@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { formSchema } from '../component/Common';
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
@@ -42,7 +41,6 @@ const Login = () => {
         <div className='login-form3'>
             <h2>Login Page</h2>
             <form 
-            validationschema={formSchema}
             onSubmit={handleSubmit} 
             id='clear-form' >
                 <div >
