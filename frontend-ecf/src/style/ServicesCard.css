@@ -1,0 +1,26 @@
+.nogridserv {
+    display: block;
+}
+
+.cardserv {
+    display: flex;
+}
+
+.cardserv {
+    border: 1px solid white;
+    margin-bottom: 5px;
+    padding: 1rem;
+}
+
+.cardserv .cardimgprix {
+    width: 30%;
+}
+
+.cardserv .cardimgprix img {
+    width: 250px;
+    height: 30vh;
+}
+
+.mini-details-card-serv {
+    width: 70%;
+}

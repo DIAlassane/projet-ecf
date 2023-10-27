@@ -13,3 +13,8 @@
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 15px;
 }
+
+.containerservice {
+    padding: 2rem;
+    background-color: #D9777F;
+}
