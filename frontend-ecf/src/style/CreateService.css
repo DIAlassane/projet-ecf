@@ -34,3 +34,7 @@
 .divquestion input:last-child {
     height: 150px;
 }
+
+.btncu {
+    cursor: pointer;
+}

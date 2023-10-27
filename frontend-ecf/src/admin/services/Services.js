@@ -25,7 +25,7 @@ function Services() {
 
   return (
     <div>
-        <div className='containeruser'>
+        <div className='containerservices'>
         <a className='btndash' href="/dashBoard">Dashboard</a>
         <div className='userslist'>
             <h2>Liste des Services</h2>
