@@ -3,9 +3,51 @@
 }
 
 .imgservice {
-    width: 40%;
+    width: 30%;
 }
 
 .imgservice img {
     width: 100%;
+}
+
+.imgservice h2 {
+    color: #D94350;
+    padding: 0.5rem;
+}
+
+.imgservice p {
+    color: #262526ac;
+}
+
+.descservadmin {
+    width: 55%;
+    margin-left: 7.5%;
+    justify-content: center;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.descservadmin p {
+    font-size: .8rem;
+    margin-top: .5rem;
+}
+
+.descservadmin h3 {
+    color: #D92332;
+    margin-top: .3rem;
+}
+
+.cardserviceadmin {
+    margin: 1rem;
+    border: 1px solid #262526;
+    padding: 1rem;
+}
+
+.butn .delete {
+    padding: .4rem;
+    background-color: #D92332;
+    margin-left: 1rem;
+    color: white;
+    border: none;
+    border-radius: 3px;
 }

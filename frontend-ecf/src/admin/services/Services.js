@@ -55,7 +55,7 @@ function Services() {
                             </div>
                         </div>
                         
-                        <div>
+                        <div className='butn'>
                             <Link className='btnedit' to={`/updateService/${service.service_id}`}>MAJ</Link>
                             <button className='delete' onClick={(e) => handleDelete(service.service_id)}>
                                 Supprimer
