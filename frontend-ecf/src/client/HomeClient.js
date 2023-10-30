@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from '../nav-footer/Navbar'
 import CarCard from './CarCard'
 import Header from '../component/Header'
+import { Link } from 'react-router-dom'
 
 import '../style/HomeClient.css'
 import ServicesCard from './ServicesCard'
@@ -11,6 +12,10 @@ function HomeClient() {
     <div>
         <Navbar />
         <div>
+          <div className="vparrotlinks">
+            <Link to='/allCars'>Nos voitures</Link>
+            <Link to='/allCars'>Nos Services</Link>
+          </div>
           <Header />
         </div>
         <div className="servicescont">

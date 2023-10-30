@@ -10,6 +10,8 @@
     border: 1px solid white;
     margin-bottom: 5px;
     padding: 1rem;
+    background-color: #D94350;
+    cursor: pointer;
 }
 
 .cardserv .cardimgprix {
@@ -23,4 +25,28 @@
 
 .mini-details-card-serv {
     width: 70%;
+    background-color: white;
+}
+
+.titredesc {
+    padding: 2rem;
+}
+
+.titredesc h3 {
+    color: white;
+    background-color: #26252672;
+    padding: .3rem;
+}
+
+.titredesc p {
+    padding: .5rem;
+    font-size: .8rem;
+    width: 50%;
+    margin-left: 25%;
+    border-bottom: 1px solid #26252672;
+}
+
+.prixserv h4 {
+    background-color: #D9777F;
+    color: white;
 }

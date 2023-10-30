@@ -28,16 +28,16 @@ function ServicesCard() {
             <div className='cardserv' key={service.service_id} onClick={() => handleServicesSelect(service.service_id)}>
                 <div className="cardimgprix">
                     <img src={service.img} alt="" />
-                    <div className="prixserv">
-                        <h5>{service.prix} $</h5>
-                    </div> 
                 </div>
 
                 <div className='mini-details-card-serv'>
-                    <div className="marmod">
+                    <div className="titredesc">
                     <h3>{service.title}</h3>
                     <p>{service.decriptioncard}</p>
                     </div>
+                    <div className="prixserv">
+                        <h4>{service.prix} $</h4>
+                    </div> 
                 </div>
             </div>
             );

@@ -2,10 +2,14 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../style/CarCard.css'
+import Pagination from '../component/Pagination';
 
 function CarCard() {
     const [cars, setCars] = useState([]);
     const navigate = useNavigate();
+
+    const [page, setPage] = useState(1);
+    const itemsPerPage = 3; // Nombre d'éléments par page
   
       useEffect(() => {
         axios.get('http://localhost:4000/addcar')
@@ -17,10 +21,12 @@ function CarCard() {
       console.log(id)
       navigate(`/detailCar/${id}`);
     }
+
+    const totalItems = cars.length;
   
   return (
     <div>
-        <div className='grid'>
+<Pagination page={page} setPage={setPage} itemsPerPage={itemsPerPage} totalItems={totalItems} />        <div className='grid'>
             {cars &&
             cars.map((car) => {
                 return (
@@ -45,7 +51,7 @@ function CarCard() {
             );
             })}
         </div>
-
+        <Pagination page={page} setPage={setPage} itemsPerPage={itemsPerPage} totalItems={totalItems} />    
     </div>
   )
 }

@@ -16,5 +16,20 @@
 
 .containerservice {
     padding: 2rem;
-    background-color: #D9777F;
+    background-color: black;
+    border-radius: 50px 50px 0 0;
+}
+
+.vparrotlinks {
+    padding: .3rem;
+    background-color: white;
+    justify-content: space-between;
+    width: 20%;
+    margin-left: 40%;
+}
+
+.vparrotlinks a {
+    color: black;
+    justify-content: space-between;
+    margin-left: .5rem;
 }
