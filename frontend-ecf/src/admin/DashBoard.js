@@ -13,7 +13,7 @@ function DashBoard() {
             <a className='logodashboard' href="/"><div className="carsdashboard"></div></a>
             <a className='logodashboard' href="/users"><div className="usersdashboard"></div></a>
             <a className='logodashboard' href="/services"><div className="servicesdashboard"></div></a>
-            <a className='logodashboard' href="horaires"><div className="horairesdashboard"></div></a>
+            <a className='logodashboard' href="/horaires"><div className="horairesdashboard"></div></a>
         </div>
     </div>
   )

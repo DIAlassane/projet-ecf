@@ -327,6 +327,28 @@ app.delete('/services/:id', async (req, res) => {
 });
 
 
+
+
+// -------------------- ------------------------- ---------------------------- --------------------- //
+
+app.post('/horaires', async (req, res) => {
+    try {
+        const {  } = req.body;
+
+        const newCar = await pool.query(
+            "INSERT INTO garage (marque, modele, carburant, nbporte, couleur, vitessmax, anneesortie, prix, urlimg, urlimgban) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *",
+            [marque, modele, carburant, nbporte, couleur, vitessmax, anneesortie, prix, urlimg, urlimgban]
+         );
+
+         res.json(newCar.rows[0]);
+    } catch (err) {
+        console.log(err.message);
+    }
+})
+
+
+
+
 app.listen(4000, () => {
     console.log("server is running on port 4000")
 }) 

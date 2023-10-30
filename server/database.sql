@@ -40,3 +40,14 @@ CREATE TABLE services(
     question3 VARCHAR(255),
     reponse3 VARCHAR(755)
 );
+
+CREATE TABLE horaires(
+    horaires_id SERIAL PRIMARY KEY,
+    mois VARCHAR(55),
+    semaine VARCHAR(15),
+    jour VARCHAR(55),
+    ouverturematine VARCHAR(55),
+    fermeturematine VARCHAR(55),
+    ouverturesoire VARCHAR(55),
+    fermeturesoire VARCHAR(55)
+);

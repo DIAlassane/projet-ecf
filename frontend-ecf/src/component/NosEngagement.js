@@ -4,6 +4,8 @@ import imgTransDevis from '../assets/Devissur.png'
 import imgDevisChrono from '../assets/Devis24h.png'
 import imgPrestMilti from '../assets/Prestationsmultimarques.png'
 
+import '../App.css'
+
 function NosEngagement() {
   return (
     <div>

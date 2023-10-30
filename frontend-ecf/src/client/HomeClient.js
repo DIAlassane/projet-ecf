@@ -20,7 +20,8 @@ function HomeClient() {
           <Header />
         </div>
         <div className="servicescont">
-          <h1>Services</h1>
+          <h1 className='titreservice'><span>PRENDRE SOIN AVEC VOUS</span> <br />
+          DE VÔTRE VÉHICULE</h1>
           <div className="containerservice">
             <ServicesCard />
           </div>
@@ -29,6 +30,7 @@ function HomeClient() {
           <NosEngagement />
         </div>
         <div className="container">
+          <h1>Nos Voitures</h1>
           <CarCard />
         </div>
     </div>
