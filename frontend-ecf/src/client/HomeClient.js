@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 
 import '../style/HomeClient.css'
 import ServicesCard from './ServicesCard'
+import NosEngagement from '../component/NosEngagement'
 
 function HomeClient() {
   return (
@@ -23,6 +24,9 @@ function HomeClient() {
           <div className="containerservice">
             <ServicesCard />
           </div>
+        </div>
+        <div className="engaged">
+          <NosEngagement />
         </div>
         <div className="container">
           <CarCard />

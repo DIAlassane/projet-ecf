@@ -19,6 +19,33 @@
   padding: .5rem;
 }
 
+.pagination {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: .5rem;
+  background-color: #D9777F;
+  border: 1px solid #262526;
+  margin: 10px 10rem;
+}
+
+.pagination a {
+  padding: .5rem;
+  border: 3px solid #262526;
+  margin: 2px;
+  color: black;
+  background-color: white;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+}
+
+.pagination a:hover {
+  margin: 5px;
+  color: white;
+  background-color: #262526;
+
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
