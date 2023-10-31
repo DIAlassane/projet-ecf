@@ -1,0 +1,29 @@
+.horairecard {
+    display: grid;
+    
+}
+
+.gridhoraire {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 10px;
+}
+
+.tophoraire {
+    background-color: #D94350;
+    padding: .3rem;
+    height: 8vh;
+    justify-content: left;
+    text-align: left;
+}
+
+.tophoraire h5 {
+    background-color: black;
+    color: white;
+}
+
+.mini-details-horaire {
+    background-color: #262526;
+    color: white;
+    padding: .4rem;
+}

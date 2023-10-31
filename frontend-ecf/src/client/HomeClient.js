@@ -8,6 +8,7 @@ import '../style/HomeClient.css'
 import ServicesCard from './ServicesCard'
 import NosEngagement from '../component/NosEngagement'
 import Footer from '../nav-footer/Footer'
+import HoraireCard from './HoraireCard'
 
 function HomeClient() {
   return (
@@ -33,6 +34,9 @@ function HomeClient() {
         <div className="container">
           <h1>Nos Voitures</h1>
           <CarCard />
+        </div>
+        <div className="horairehome">
+          <HoraireCard />
         </div>
         <Footer />
     </div>
