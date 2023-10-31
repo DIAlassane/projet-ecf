@@ -13,7 +13,9 @@ import Login from './login/Login';
 import Services from './admin/services/Services';
 import CreateService from './admin/services/CreateService';
 import UpdateService from './admin/services/UpdateService';
-import Horaires from './admin/horaires/THoraires';
+import THoraires from './admin/horaires/THoraires';
+import AddHoraires from './admin/horaires/AddHoraire';
+import UpdateHoraires from './admin/horaires/UpdateHoraire';
 
 
 function App() {
@@ -34,7 +36,9 @@ function App() {
         <Route path='/services' element={<Services />} ></Route>
         <Route path='/createService' element={<CreateService />} ></Route>
         <Route path='/updateService/:id' element={<UpdateService />} ></Route>
-        <Route path='/horaires' element={<Horaires />} ></Route>
+        <Route path='/horaires' element={<THoraires />} ></Route>
+        <Route path='/addHoraires' element={<AddHoraires />} ></Route>
+        <Route path='/updateHoraires/:id' element={<UpdateHoraires />} ></Route>
       </Routes>
       </BrowserRouter>
     </div>

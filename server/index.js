@@ -329,23 +329,86 @@ app.delete('/services/:id', async (req, res) => {
 
 
 
+
 // -------------------- ------------------------- ---------------------------- --------------------- //
 
+// add Horaires
 app.post('/horaires', async (req, res) => {
     try {
-        const {  } = req.body;
+        const { 
+            mois,
+            semaine,
+            jour,
+            ouverturematine,
+            fermeturematine,
+            ouverturesoire,
+            fermeturesoire } = req.body;
 
-        const newCar = await pool.query(
-            "INSERT INTO garage (marque, modele, carburant, nbporte, couleur, vitessmax, anneesortie, prix, urlimg, urlimgban) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *",
-            [marque, modele, carburant, nbporte, couleur, vitessmax, anneesortie, prix, urlimg, urlimgban]
+        const newHoraires = await pool.query(
+            "INSERT INTO horaires (mois, semaine, jour, ouverturematine, fermeturematine, ouverturesoire, fermeturesoire ) VALUES($1, $2, $3, $4, $5, $6, $7 ) RETURNING *",
+            [mois, semaine, jour, ouverturematine, fermeturematine, ouverturesoire, fermeturesoire ]
          );
-
-         res.json(newCar.rows[0]);
+         res.json(newHoraires.rows[0]);
     } catch (err) {
         console.log(err.message);
     }
 })
 
+// get all the horaires
+app.get('/horaires', async (req, res) => {
+    try {
+        const horaire = await pool.query("SELECT * FROM horaires");
+        res.json(horaire.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+});
+
+// get a service
+app.get('/horaires/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const horaire = await pool.query("SELECT * FROM horaires WHERE horaires_id = $1", [id])
+
+        res.json(horaire.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+    }
+})
+
+// update the horaires
+app.put('/horaires/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { 
+            mois,
+            semaine,
+            jour,
+            ouverturematine,
+            fermeturematine,
+            ouverturesoire,
+            fermeturesoire   } = req.body;
+        const updateHoraire = await pool.query("UPDATE horaires SET mois = $1, semaine = $2, jour = $3, ouverturematine = $4, fermeturematine = $5, ouverturesoire = $6, fermeturesoire = $7 WHERE horaires_id = $8", [ mois, semaine, jour, ouverturematine, fermeturematine, ouverturesoire, fermeturesoire, id]);
+
+        res.json("horaire is updated");
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Erreur serveur");
+    }
+});
+
+// delete a service
+app.delete('/horaires/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deleteService = await pool.query("DELETE FROM horaires WHERE horaires_id = $1", [id]);
+
+        res.json("horaire was deleted");
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Erreur serveur");
+    }
+});
 
 
 

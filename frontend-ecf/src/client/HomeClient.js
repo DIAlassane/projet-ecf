@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import '../style/HomeClient.css'
 import ServicesCard from './ServicesCard'
 import NosEngagement from '../component/NosEngagement'
+import Footer from '../nav-footer/Footer'
 
 function HomeClient() {
   return (
@@ -33,6 +34,7 @@ function HomeClient() {
           <h1>Nos Voitures</h1>
           <CarCard />
         </div>
+        <Footer />
     </div>
   )
 }
