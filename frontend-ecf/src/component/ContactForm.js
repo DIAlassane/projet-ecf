@@ -1,46 +1,70 @@
 import React, { useState } from 'react'
 import Validation from './Validation';
+import axios from 'axios';
 
 import '../style/ContactForm.css'
 
 function ContactForm() {
     const [values, setValues] = useState({
-        name: '',
-        firstname: '',
+        nom: '',
+        prenom: '',
         email: '',
-        tel: ''
+        numero: ''
     })
 
     const [errors, setErrors] = useState({})
 
     function handleInput(event) {
-        const newObj = {...values, [event.target.name]: event.target.value}
-        setValues(newObj)
+        const {name, value} = event.target;
+        setValues((prev) => {
+            return { ...prev, [name]: value }
+        });
     }
 
-    function handleValidation(event) {
+    // function handleValidation(e) {
+    //     e.preventDefault();
+    //     Validation(values);
+    // }
+    
+    const handleSubmit = (event) => {
         event.preventDefault();
-        setErrors(Validation(values));
+
+        // Validez les champs
+        const validationErrors = Validation(values);
+        setErrors(validationErrors);
+
+        // Si aucune erreur de validation, soumettez les données
+        if (Object.keys(validationErrors).length === 0) {
+            // Effectuez l'appel axios.post ici
+            axios.post("http://localhost:4000/contactus", values)
+                .then(result => {
+                    alert("Vous avez bien soumis le formulaire")
+                    console.log(result);
+                    window.location.reload();
+                })
+                .catch(err => console.log(err));
+        }
+        
     }
 
   return (
     <div>
         <div className="contactform">
             <h4>Contact</h4>
-            <form className='formcontact' onSubmit={handleValidation} action="">
+            <form className='formcontact' onSubmit={handleSubmit} action="">
                 <input 
                 type="text"
                 placeholder='Entrer vôtre Nom'
-                name='name'
+                name='nom'
                 onChange={handleInput} />
-                {errors.name && <p style={{color: "red"}}>{errors.name}</p>}
+                {errors.nom && <p style={{color: "red"}}>{errors.nom}</p>}
 
                 <input 
                 type="text"
                 placeholder='Entrer vôtre Prénom'
-                name='firstname'
+                name='prenom'
                 onChange={handleInput} />
-                {errors.firstname && <p style={{color: "red"}}>{errors.firstname}</p>}
+                {errors.prenom && <p style={{color: "red"}}>{errors.prenom}</p>}
 
                 <input 
                 type="text"
@@ -52,12 +76,12 @@ function ContactForm() {
                 <input 
                 type="text"
                 placeholder='Entrer vôtre numéro'
-                name='tel'
+                name='numero'
                 onChange={handleInput} />
-                {errors.tel && <p style={{color: "red"}}>{errors.tel}</p>}
+                {errors.numero && <p style={{color: "red"}}>{errors.numero}</p>}
 
                 <div className="contactbtn">
-                    <button>Soumettre</button>
+                    <button type='submit'>Soumettre</button>
                 </div>
             </form>
         </div>

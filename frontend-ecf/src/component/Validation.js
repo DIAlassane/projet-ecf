@@ -1,21 +1,22 @@
 export default function Validation(values) {
+  
   const errors = {}
 
   const email_pattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,6}$/;
-  const tel_pattern = /^(?:(?:(?:\+|00)33[ ]?(?:\(0\)[ ]?)?)|0){1}[1-9]{1}([ .-]?)(?:\d{2}\1?){3}\d{2}$/;
+  const numero_pattern = /^(?:(?:(?:\+|00)33[ ]?(?:\(0\)[ ]?)?)|0){1}[1-9]{1}([ .-]?)(?:\d{2}\1?){3}\d{2}$/;
 
-  if(values.name === "") {
-    errors.name = "Un nom est Requis !";
+  if(values.nom === "") {
+    errors.nom = "Un nom est Requis !";
   }
 
-  if(values.firstname === "") {
-    errors.firstname = "Un prénom est Requis !";
+  if(values.prenom === "") {
+    errors.prenom = "Un prénom est Requis !";
   }
 
-  if(values.tel === "") {
-    errors.tel = "Un numéro est Requis !";
-  }else if (!tel_pattern.test(values.tel)) {
-    errors.tel = "Le numéro est incorrect"
+  if(values.numero === "") {
+    errors.numero = "Un numéro est Requis !";
+  }else if (!numero_pattern.test(values.numero)) {
+    errors.numero = "Le numéro est incorrect"
   }
 
   if(values.email === "") {

@@ -412,6 +412,47 @@ app.delete('/horaires/:id', async (req, res) => {
 
 // ------------------------  --------------------------------- ------------------------------------------------------------- ------------------------------------------ //
 
+// add Horaires
+app.post('/contactus', async (req, res) => {
+    try {
+        const { 
+            email,
+            numero,
+            nom,
+            prenom } = req.body;
+
+        const newContact = await pool.query(
+            "INSERT INTO contact (email, numero, nom, prenom ) VALUES($1, $2, $3, $4 ) RETURNING *",
+            [email, numero, nom, prenom ]
+         );
+         res.json(newContact.rows[0]);
+    } catch (err) {
+        console.log(err.message);
+    }
+})
+
+// get all the horaires
+app.get('/contactus', async (req, res) => {
+    try {
+        const contact = await pool.query("SELECT * FROM contact");
+        res.json(contact.rows);
+    } catch (err) {
+        console.error(err.message);
+    }
+});
+
+// delete a service
+app.delete('/contactus/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deleteContact = await pool.query("DELETE FROM contact WHERE contact_id = $1", [id]);
+
+        res.json("contact was deleted");
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Erreur serveur");
+    }
+});
 
 
 
