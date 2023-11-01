@@ -397,7 +397,7 @@ app.put('/horaires/:id', async (req, res) => {
     }
 });
 
-// delete a service
+// delete a horaires
 app.delete('/horaires/:id', async (req, res) => {
     try {
         const { id } = req.params;
@@ -412,7 +412,7 @@ app.delete('/horaires/:id', async (req, res) => {
 
 // ------------------------  --------------------------------- ------------------------------------------------------------- ------------------------------------------ //
 
-// add Horaires
+// add contact
 app.post('/contactus', async (req, res) => {
     try {
         const { 
@@ -431,7 +431,7 @@ app.post('/contactus', async (req, res) => {
     }
 })
 
-// get all the horaires
+// get all the contact
 app.get('/contactus', async (req, res) => {
     try {
         const contact = await pool.query("SELECT * FROM contact");
@@ -441,7 +441,7 @@ app.get('/contactus', async (req, res) => {
     }
 });
 
-// delete a service
+// delete a contact
 app.delete('/contactus/:id', async (req, res) => {
     try {
         const { id } = req.params;
