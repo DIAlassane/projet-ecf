@@ -16,6 +16,7 @@ import UpdateService from './admin/services/UpdateService';
 import THoraires from './admin/horaires/THoraires';
 import AddHoraires from './admin/horaires/AddHoraire';
 import UpdateHoraires from './admin/horaires/UpdateHoraire';
+import Contact from './client/Contact';
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
         <Route path='/horaires' element={<THoraires />} ></Route>
         <Route path='/addHoraires' element={<AddHoraires />} ></Route>
         <Route path='/updateHoraires/:id' element={<UpdateHoraires />} ></Route>
+        <Route path='/contact' element={<Contact />} ></Route>
       </Routes>
       </BrowserRouter>
     </div>

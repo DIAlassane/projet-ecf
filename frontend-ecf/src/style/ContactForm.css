@@ -1,0 +1,27 @@
+.contactform {
+    margin: 20%;
+    width: 60%;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.contactform h4 {
+    color: black;
+    font-weight: 900;
+    font-size: 2rem;
+    padding: .7rem;
+}
+
+.formcontact input{
+    display: block;
+    width: 100%;
+    padding: .4rem;
+    margin-bottom: .5rem;
+}
+
+.contactbtn button {
+    padding: .4rem;
+    color: black;
+    font-weight: 600;
+}

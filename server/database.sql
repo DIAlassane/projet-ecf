@@ -51,3 +51,18 @@ CREATE TABLE horaires(
     ouverturesoire VARCHAR(55),
     fermeturesoire VARCHAR(55)
 );
+
+CREATE TABLE contact(
+    contact_id SERIAL PRIMARY KEY,
+    email VARCHAR(350),
+    numero VARCHAR(20),
+    nom VARCHAR(200),
+    prenom VARCHAR(200)
+);
+
+CREATE TABLE devis(
+    devis_id SERIAL PRIMARY KEY,
+    plaque VARCHAR(20),
+    ville VARCHAR(80),
+    nom VARCHAR(100)
+);
