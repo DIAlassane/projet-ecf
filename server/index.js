@@ -201,12 +201,11 @@ app.delete('/users/:id', async (req, res) => {
     }
 });
 
-
 // login //
 app.use(session({
-    secret: 'alassane',
+    secret: 'password',
     credentials: true,
-    name: 'sid',
+    name: 'projetecf',
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -215,37 +214,6 @@ app.use(session({
         sameSite: process.env.ENVIRONMENT === 'production' ? 'none' : 'lax',
     }
 }));
-// app.get('/login', (req, res) => {
-//     if (req.session.users) {
-//         res.send({ loggedIn: true, user: req.session.user });
-//         console.log('probleme')
-//     } else {
-//         res.send({ loggedIn: false });
-//         console.log('blempro')
-//     }
-// })
-
-app.get('/loginsess', async (req, res) => {
-    try {
-        if (req.session.users) {
-            const userId = req.session.users.id;
-            const { rows } = await pool.query("SELECT * FROM connexion WHERE id = $1", [userId]);
-
-            if (rows.length > 0) {
-                res.json({ loggedIn: true, user: rows[0] }); // Utilisateur trouvé dans la base de données, renvoyer les données de l'utilisateur
-            } else {
-                res.json({ loggedIn: false }); // Aucun utilisateur trouvé dans la base de données
-            }
-        } else {
-            res.json({ loggedIn: false }); // Pas d'utilisateur connecté
-        }
-    } catch (error) {
-        console.error("Erreur lors de la récupération des informations de l'utilisateur :", error);
-        res.status(500).json({ error: "Internal Server Error" });
-    }
-});
-
-
 
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
@@ -265,28 +233,33 @@ app.post('/login', async (req, res) => {
 
     });
 
+    app.use(session({
+        secret: 'password',
+        resave: false,
+        saveUninitialized: true,
+        cookie: {
+            sameSite: "none",
+            secure: true
+        }
+    }));
 
+// Votre gestionnaire de déconnexion
+app.post('/logout', async (req, res) => {
+    try {
+        // Supprimer la session de l'utilisateur de la base de données (vous devez avoir une table pour stocker les sessions utilisateur)
+        const userId = req.session.users.id;
+        await pool.query("DELETE FROM sessions WHERE user_id = $1", [userId]);
 
-    // const { email, password } = req.body;
-
-    //     const user = pool.query(
-    //     "SELECT * FROM connexion WHERE email = $1 AND password = $2",
-    //     [email, password],
-    //     (err, result) => {
-    //         if (err) {
-    //             res.send({err: err});
-    //         }
-    //         if (result.length > 0){
-    //             res.send(result);
-    //         } else  {
-    //             res.send({ message: "Wrong email/password combination" })
-    //         }
-    //     }
-    //  );
-    
-
-
-
+        // Effacer le cookie de l'utilisateur
+        res.clearCookie("access_token", {
+            sameSite: "none",
+            secure: true,
+        }).status(200).json("Vous avez bien été déconnecté");
+    } catch (error) {
+        console.error("Erreur lors de la déconnexion :", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
 
 
 

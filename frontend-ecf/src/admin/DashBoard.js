@@ -1,6 +1,7 @@
 import React from 'react'
 
 import '../style/DashBoard.css'
+import { LogoutBtn } from '../login/LogOutBtn'
 
 function DashBoard() {
   return (
@@ -19,6 +20,7 @@ function DashBoard() {
           <div className="basdash">
             <a href="/contactus">Les demandes de contact</a>
           </div>
+          <LogoutBtn />
         </div>
         
     </div>

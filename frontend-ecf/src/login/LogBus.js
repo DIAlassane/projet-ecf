@@ -8,6 +8,10 @@ export const LogBus = () => {
 
     const [loginus, setLoginus] = useState("");
 
+    const logout = () => {
+        localStorage.clear();
+        }
+
     const navigate = useNavigate();
 
     axios.defaults.withCredentials = true;
@@ -18,13 +22,15 @@ export const LogBus = () => {
             email: email,
             password: password,
         }).then((response) => {
+            console.log(response.data)
             if (response.data.message) {
                 setLoginus(response.data.message)
             } else {
                 setLoginus(response.data[0].email);
-                navigate('/main')
+                // Stockez l'objet utilisateur complet dans le localStorage
+                localStorage.setItem('user', JSON.stringify(response.data[0]));
+                navigate('/dashboardemp');
             }
-            
         })
     }
 
@@ -41,6 +47,8 @@ export const LogBus = () => {
             <button>Se connecter</button>
 
             <h1>{loginus}</h1>
+
+            <a onClick={logout} href="/"> Logout</a>
         </form>
     </div>
   )
