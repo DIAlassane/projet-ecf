@@ -9,12 +9,15 @@ export default function Main() {
     axios.defaults.withCredentials = true;
 
     useEffect(() => {
-        axios.get("http://localhost:4000/login").then((response) => {
+        axios.get("http://localhost:4000/loginsess") 
+        .then((response) => {
             if (response.data.loggedIn === true) {
-                setRole(response.data.user[0].role)
+                setRole(response.data.user[0].role);
             }
         })
-    }, []);
+        .catch((error) => {
+            console.error("Erreur lors de la requête Axios :", error);
+        });    }, []);
 
   return (
     <div>

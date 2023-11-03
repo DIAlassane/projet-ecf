@@ -1,18 +1,34 @@
-//import de le lib express
+//import des librairie
 const express = require('express'); 
 const cors = require('cors');
 const pool = require('./db');
 const bcrypt = require('bcrypt');
 const session = require('express-session');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 // const { authPage, authAdmin } = require('./controller/middlewares');
 
 // variable app qui utilise la lib d'express
 const app = express(); 
 require("dotenv").config();
 
+// Configurer CORS
+const corsOptions = {
+    origin: 'http://localhost:3000', // Autorise les requêtes provenant de ce domaine
+    credentials: true, // Indiquez que les cookies et les en-têtes d'authentification peuvent être inclus
+};
+
+app.use(cors(corsOptions)); // Utilisez le middleware CORS avec les options spécifiées
+
+app.use(cookieParser());
+app.use((req, res, next) => {
+    console.log(req.cookies); // Affiche les cookies dans la console
+    next();
+});
+
+
+
 // Middleware
-app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json())
 
@@ -185,20 +201,20 @@ app.delete('/users/:id', async (req, res) => {
     }
 });
 
+
 // login //
 app.use(session({
     secret: 'alassane',
     credentials: true,
-    name: "sid",
+    name: 'sid',
     resave: false,
     saveUninitialized: true,
     cookie: {
-        secure: process.env.ENVIRONMENT === "production" ? "true" : "auto",
+        secure: process.env.ENVIRONMENT === 'production' ? true : 'auto',
         httpOnly: true,
-        sameSite: process.env.ENVIRONMENT === "production" ? "none" : "lax",
+        sameSite: process.env.ENVIRONMENT === 'production' ? 'none' : 'lax',
     }
-}))
-
+}));
 // app.get('/login', (req, res) => {
 //     if (req.session.users) {
 //         res.send({ loggedIn: true, user: req.session.user });
@@ -209,7 +225,7 @@ app.use(session({
 //     }
 // })
 
-app.get('/login', async (req, res) => {
+app.get('/loginsess', async (req, res) => {
     try {
         if (req.session.users) {
             const userId = req.session.users.id;

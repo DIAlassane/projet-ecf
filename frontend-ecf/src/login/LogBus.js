@@ -1,11 +1,16 @@
 import axios from 'axios';
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export const LogBus = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const [loginus, setLoginus] = useState("");
+
+    const navigate = useNavigate();
+
+    axios.defaults.withCredentials = true;
 
     const login = (e) => {
         e.preventDefault();
@@ -16,7 +21,8 @@ export const LogBus = () => {
             if (response.data.message) {
                 setLoginus(response.data.message)
             } else {
-                setLoginus(response.data[0].email)
+                setLoginus(response.data[0].email);
+                navigate('/main')
             }
             
         })
