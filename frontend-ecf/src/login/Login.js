@@ -5,6 +5,7 @@ import axios from 'axios'
 const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [role, setRole] = useState('')
     const [error, setError] = useState(false)
     const navigate = useNavigate()
 
@@ -12,6 +13,7 @@ const Login = () => {
         e.preventDefault()
                 let userData = {
                     email:email,
+                    role:role,
                     password:password
                 }
         console.log("Clicked on login")
@@ -26,7 +28,7 @@ const Login = () => {
         })
         .then(response => {
             console.log(response.data);
-            navigate('/dashBoard');
+            navigate('/main');
         })
 
         e.target.reset();
@@ -60,11 +62,17 @@ const Login = () => {
                 {error&&password.length < 8?
                 <label >Veuillez remplire ce champ</label>: ""}
                 <div>
+                    <input type="password" 
+                    className='input3'
+                    placeholder='role'
+                    onChange={e=>setRole(e.target.value)} />
+                </div>
+                <div>
                     <button className='button3'>Se connecter</button>
                 </div>
             </form>
             <div className="transit">
-                <a href="/signup" >Sign up now !</a>
+                <a href="/" >Retour</a>
             </div>
         </div>
     </div>

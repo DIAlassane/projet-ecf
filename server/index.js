@@ -5,6 +5,7 @@ const pool = require('./db');
 const bcrypt = require('bcrypt');
 const session = require('express-session');
 const bodyParser = require('body-parser');
+// const { authPage, authAdmin } = require('./controller/middlewares');
 
 // variable app qui utilise la lib d'express
 const app = express(); 
@@ -198,37 +199,76 @@ app.use(session({
     }
 }))
 
+// app.get('/login', (req, res) => {
+//     if (req.session.users) {
+//         res.send({ loggedIn: true, user: req.session.user });
+//         console.log('probleme')
+//     } else {
+//         res.send({ loggedIn: false });
+//         console.log('blempro')
+//     }
+// })
 
-app.post('/users/login', async (req, res) => {
+app.get('/login', async (req, res) => {
     try {
-        const potentialLogin = await pool.query("SELECT email, password FROM connexion u WHERE u.email = $1", [req.body.email]);
+        if (req.session.users) {
+            const userId = req.session.users.id;
+            const { rows } = await pool.query("SELECT * FROM connexion WHERE id = $1", [userId]);
 
-        if (potentialLogin.rowCount > 0) {
-            console.log(req.session)
-            // Utilisez une bibliothèque de hachage comme bcrypt pour comparer les mots de passe
-            const isSamePassword = bcrypt.compare(req.body.password, potentialLogin.rows[0].password);
-
-            if (isSamePassword) {
-                // Connexion réussie
-                req.session.users = {
-                    email: req.body.email,
-                    id: potentialLogin.rows[0].id,
-                };
-                res.json({ LoggedIn: true, status: "Logged in successfully" });
+            if (rows.length > 0) {
+                res.json({ loggedIn: true, user: rows[0] }); // Utilisateur trouvé dans la base de données, renvoyer les données de l'utilisateur
             } else {
-                // Mauvais login
-                res.json({ LoggedIn: false, status: "Wrong email ? or password" });
+                res.json({ loggedIn: false }); // Aucun utilisateur trouvé dans la base de données
             }
         } else {
-            // Aucun utilisateur trouvé avec cet email
-            res.json({ LoggedIn: false, status: "Wrong email or password" });
+            res.json({ loggedIn: false }); // Pas d'utilisateur connecté
+        }
+    } catch (error) {
+        console.error("Erreur lors de la récupération des informations de l'utilisateur :", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+
+
+
+app.post('/login', async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        const { rows } = await pool.query("SELECT * FROM connexion WHERE email = $1 AND password = $2", [email, password]);
+    
+        if (rows.length > 0) {
+            res.json(rows); // Utilisateur trouvé, renvoyer les données de l'utilisateur
+        } else {
+            res.status(401).json({ message: "Wrong email/password combination" }); // Aucun utilisateur trouvé avec cet email/mot de passe
         }
     } catch (error) {
         console.error("Erreur lors de la tentative de connexion :", error);
         res.status(500).json({ error: "Internal Server Error" });
     }
+
+    });
+
+
+
+    // const { email, password } = req.body;
+
+    //     const user = pool.query(
+    //     "SELECT * FROM connexion WHERE email = $1 AND password = $2",
+    //     [email, password],
+    //     (err, result) => {
+    //         if (err) {
+    //             res.send({err: err});
+    //         }
+    //         if (result.length > 0){
+    //             res.send(result);
+    //         } else  {
+    //             res.send({ message: "Wrong email/password combination" })
+    //         }
+    //     }
+    //  );
     
-});
+
 
 
 
