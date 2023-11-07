@@ -1,16 +1,15 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { BtnLogOut } from './BtnLogOut';
+
+import '../App.css'
 
 export const LogBus = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const [loginus, setLoginus] = useState("");
-
-    const logout = () => {
-        localStorage.clear();
-        }
 
     const navigate = useNavigate();
 
@@ -30,26 +29,30 @@ export const LogBus = () => {
                 // Stockez l'objet utilisateur complet dans le localStorage
                 localStorage.setItem('user', JSON.stringify(response.data[0]));
                 navigate('/dashboardemp');
+                window.location.reload()
+                alert('reussi')
             }
         })
     }
 
   return (
     <div>
-        <form className="login"
+        <form className="login" method='POST'
         onSubmit={login}>
             <h1>Se connecter</h1>
-            <input type="text" placeholder='email'
+            <input type="email" placeholder='email'
+            name='email'
             onChange={(e) => {setEmail(e.target.value)}} />
-            <input type="text" placeholder='password'
+            <input type="password" placeholder='password'
             onChange={(e) => {setPassword(e.target.value)}} />
                         
             <button>Se connecter</button>
 
             <h1>{loginus}</h1>
 
-            <a onClick={logout} href="/"> Logout</a>
+            <a href="/"> retour</a>
         </form>
+        <BtnLogOut />
     </div>
   )
 }

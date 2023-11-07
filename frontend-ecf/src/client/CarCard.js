@@ -53,7 +53,7 @@ function CarCard() {
                     return null; // Ne rien afficher pour les éléments qui ne sont pas dans la plage de la page actuelle
                 })}
         </div>
-        <Pagination page={page} setPage={setPage} itemsPerPage={itemsPerPage} totalItems={totalItems} />    
+        {/* <Pagination page={page} setPage={setPage} itemsPerPage={itemsPerPage} totalItems={totalItems} />     */}
     </div>
   )
 }

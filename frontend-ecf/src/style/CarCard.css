@@ -39,3 +39,11 @@
     justify-content: left;
     text-align: left;
 }
+
+@media screen and (max-width: 390px) {
+    .card {
+        width: 330px;
+        height: 250px;
+        border-radius: 10px;
+    }
+}

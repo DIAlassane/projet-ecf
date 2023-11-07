@@ -132,9 +132,12 @@ app.post('/users', async (req, res) => {
             numsecu,
             genre } = req.body;
 
+            // Hashage du mot de passe avec bcrypt
+        const hashedPassword = await bcrypt.hash(password, 10); // Le deuxième argument est le coût du hash (nombre de tours)
+
         const user = await pool.query(
             "INSERT INTO connexion ( role, name, firstname, email, password, adresse, birth, numsecu, genre) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *",
-            [ role, name, firstname, email, password, adresse, birth, numsecu, genre]
+            [ role, name, firstname, email, hashedPassword, adresse, birth, numsecu, genre]
          );
 
          res.json(user.rows[0]);
@@ -179,7 +182,17 @@ app.put('/users/:id', async (req, res) => {
             birth,
             numsecu,
             genre  } = req.body;
-        const updateUser = await pool.query("UPDATE connexion SET role = $1, name = $2, firstname = $3, email = $4, password = $5, adresse = $6, birth = $7, numsecu = $8, genre = $9 WHERE user_id = $10", [role, name, firstname, email, password, adresse, birth, numsecu, genre, id]);
+
+             // Hashage du mot de passe avec bcrypt s'il est fourni
+        let hashedPassword = password;
+        if (password) {
+            hashedPassword = await bcrypt.hash(password, 10);
+        }
+
+        const updateUser = await pool.query(
+            "UPDATE connexion SET role = $1, name = $2, firstname = $3, email = $4, password = $5, adresse = $6, birth = $7, numsecu = $8, genre = $9 WHERE user_id = $10", 
+            [role, name, firstname, email, hashedPassword, adresse, birth, numsecu, genre, id]
+            );
 
         res.json("user is updated");
     } catch (err) {
@@ -273,6 +286,7 @@ app.post('/logout', async (req, res) => {
 // create //add// a service
 app.post('/services', async (req, res) => {
     try {
+        // Récupération des données du corps de la requête (req.body)
         const { 
             img,
             title ,
@@ -285,13 +299,16 @@ app.post('/services', async (req, res) => {
             question3,
             reponse3 } = req.body;
 
+            // Exécution d'une requête SQL pour insérer les données dans la table 'services'
         const service = await pool.query(
             "INSERT INTO services (  img, title , prix, decriptioncard, question, reponse,  question2, reponse2, question3, reponse3) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *",
             [  img, title , prix, decriptioncard, question, reponse,  question2, reponse2, question3, reponse3]
          );
 
+         // Envoi de la réponse au client sous forme de JSON avec les données insérées
          res.json(service.rows[0]);
     } catch (err) {
+        // Gestion des erreurs : affichage de l'erreur dans la console
         console.log(err.message);
     }
 })
@@ -299,9 +316,12 @@ app.post('/services', async (req, res) => {
 // get all the services
 app.get('/services', async (req, res) => {
     try {
+        // Exécute une requête SQL pour sélectionner toutes les lignes de la table 'services'
         const service = await pool.query("SELECT * FROM services");
+        // Envoie la réponse au client sous forme de JSON avec les données sélectionnées
         res.json(service.rows);
     } catch (err) {
+        // Gestion des erreurs : affichage de l'erreur dans la console
         console.error(err.message);
     }
 });
@@ -321,7 +341,9 @@ app.get('/services/:id', async (req, res) => {
 // update the services
 app.put('/services/:id', async (req, res) => {
     try {
+        // Récupération de l'identifiant (ID) de la requête URL
         const { id } = req.params;
+        // Récupération des données du corps de la requête (req.body)
         const { 
             img,
             title ,
@@ -333,10 +355,15 @@ app.put('/services/:id', async (req, res) => {
             reponse2,
             question3,
             reponse3  } = req.body;
-        const updateService = await pool.query("UPDATE services SET img = $1, title = $2, prix = $3, descriptioncard = $4, question = $5, reponse = $6, question2 = $7, reponse2 = $8, question3 = $9, reponse3 = $10 WHERE service_id = $11", [ img, title , prix, decriptioncard, question, reponse,  question2, reponse2, question3, reponse3, id]);
+            // Exécution d'une requête SQL pour mettre à jour la ligne correspondant à l'ID donné dans la table 'services'
+        const updateService = await pool.query(
+            "UPDATE services SET img = $1, title = $2, prix = $3, descriptioncard = $4, question = $5, reponse = $6, question2 = $7, reponse2 = $8, question3 = $9, reponse3 = $10 WHERE service_id = $11",
+         [ img, title , prix, decriptioncard, question, reponse,  question2, reponse2, question3, reponse3, id]);
 
+        // Envoie une réponse JSON au client pour indiquer que le service a été mis à jour
         res.json("service is updated");
     } catch (err) {
+        // Gestion des erreurs : affichage de l'erreur dans la console et envoi d'une réponse d'erreur au client avec le code d'état 500 (Erreur serveur)
         console.error(err.message);
         res.status(500).send("Erreur serveur");
     }
@@ -345,15 +372,44 @@ app.put('/services/:id', async (req, res) => {
 // delete a service
 app.delete('/services/:id', async (req, res) => {
     try {
+        // Récupération de l'identifiant (ID) à partir de l'URL
         const { id } = req.params;
+        // Exécute une requête SQL pour supprimer la ligne dans la table 'services' où l'ID correspond à celui donné dans la requête
         const deleteService = await pool.query("DELETE FROM services WHERE service_id = $1", [id]);
 
+        // Envoie une réponse JSON au client pour indiquer que le service a été supprimé avec succès
         res.json("service was deleted");
     } catch (err) {
+        // Gestion des erreurs : affichage de l'erreur dans la console et envoi d'une réponse d'erreur au client avec le code d'état 500 (Erreur serveur)
         console.error(err.message);
         res.status(500).send("Erreur serveur");
     }
 });
+
+app.get('/me', (req, res) => {
+    // Récupère le token JWT envoyé par le client depuis l'en-tête de la requête
+    const token = req.headers.authorization.split(' ')[1]; // Le token est généralement envoyé dans l'en-tête avec le format 'Bearer TOKEN'
+
+    // Vérifie le token JWT en utilisant la clé secrète ('secret_key' dans cet exemple)
+    jwt.verify(token, 'secret_key', (err, decoded) => {
+        if (err) {
+            // Si le token n'est pas valide, renvoie un statut 401 (Non autorisé) au client avec un message d'erreur
+            res.status(401).send({ message: "Unauthorized" });
+        } else {
+            // Si le token est valide, utilisez l'ID extrait du token pour interroger la base de données et récupérer les données de l'utilisateur
+            db.query("SELECT * FROM users WHERE id = ?", [decoded.id], (err, result) => {
+                if (err) {
+                    // En cas d'erreur lors de la requête SQL, renvoie une réponse avec l'erreur au client
+                    res.send({ err: err });
+                } else {
+                    // Si la requête SQL réussit, renvoie les données de l'utilisateur (première ligne du résultat) au client
+                    res.send(result[0]);
+                }
+            });
+        }
+    });
+});
+
 
 
 

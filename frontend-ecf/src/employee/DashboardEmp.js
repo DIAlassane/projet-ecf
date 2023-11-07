@@ -9,10 +9,10 @@ export const DashboardEmp = () => {
     useEffect(() => {
         console.log(currentUser)
         if (currentUser) {
-            if (currentUser.role === 'admin') {
+            if (currentUser?.role === 'admin') {
                 navigate('/dashBoard');
-            } else if (currentUser.role === 'employer') {
-                navigate('/cars')
+            } else if (currentUser?.role === 'employer') {
+                navigate('/dashemployer')
             }
         } else {
             // Gérer le cas où currentUser est null (peut-être rediriger vers la page de connexion?)

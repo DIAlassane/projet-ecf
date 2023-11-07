@@ -18,3 +18,13 @@
     width: 100%;
     height: 90vh;
 }
+
+@media screen and (max-width: 390px) {
+    .contactright {
+        display: none;
+    }
+
+    .contactleft {
+        width: 100%;
+    }
+}

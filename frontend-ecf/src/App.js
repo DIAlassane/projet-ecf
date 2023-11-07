@@ -20,9 +20,8 @@ import Contact from './client/Contact';
 import Contactus from './admin/contact/Contactus';
 import { LogBus } from './login/LogBus';
 import { DashboardEmp } from './employee/DashboardEmp';
-// import LoginUser from './login/LoginUser';
-//import ProtectedRoute from './protection/ProtectedRoute';
-// import Protectedroutes from './protection/Protectedroutes';
+import { DashEmployer } from './employee/DashEmployer';
+// import ProtectedRoute from './protection/Protectedroutes';
 
 function App() {
   return (
@@ -53,6 +52,7 @@ function App() {
         <Route path='/updateHoraires/:id' element={<UpdateHoraires />} ></Route>
         <Route path='/contactus' element={<Contactus />} ></Route>
         <Route path='/dashboardemp' element={<DashboardEmp />} ></Route>
+        <Route path='/dashemployer' element={<DashEmployer />} ></Route>
 
           {/* </Route> */}
           

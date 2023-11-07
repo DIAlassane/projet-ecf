@@ -40,3 +40,31 @@
     padding: 1rem;
     border-bottom: 3px solid white;
 }
+
+@media screen and (max-width: 390px) {
+    .footer {
+        display: block;
+        padding: 3rem 10rem;
+        background-color: #D94350;
+        justify-content: space-between;
+    }
+
+    .navfooter {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 10px;
+    }
+
+    .navfooter {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+    }
+
+    .footer {
+        display: block;
+        padding: 1rem 1rem;
+        background-color: #D94350;
+        justify-content: space-between;
+    }
+}

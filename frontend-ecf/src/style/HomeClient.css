@@ -49,3 +49,26 @@
     padding: 2rem;
     background-color: #2625269f;
 }
+
+@media screen and (max-width: 390px) {
+    .vparrotlinks a {
+        display: block;
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .vparrotlinks {
+        width: 50%;
+    }
+
+    .grid {
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    .container {
+        margin-bottom: 2rem;
+        height: 140vh;
+    }
+}

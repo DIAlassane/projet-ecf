@@ -21,3 +21,15 @@
     color: #D92332;
     margin-bottom: .4rem;
 }
+
+@media screen and (max-width: 390px) {
+    .header img {
+        display: none;
+    }
+
+    .textheader {
+        color: white;
+        width: 100%;
+        padding: 1rem;
+    }
+}

@@ -74,6 +74,20 @@
   width: 19%;
 }
 
+@media screen and (max-width: 390px) {
+  .engagement {
+    display: none;
+  }
+
+  .login {
+    width: 50%;
+    margin-left: 25%;
+    background-color: #0000004e;
+    margin-top: 2rem;
+    display: block;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

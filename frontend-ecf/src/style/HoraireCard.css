@@ -27,3 +27,11 @@
     color: white;
     padding: .4rem;
 }
+
+@media screen and (max-width: 390px) {
+    .gridhoraire {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 10px;
+    }
+}

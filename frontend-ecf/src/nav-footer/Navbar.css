@@ -21,3 +21,9 @@
 .navlinks a:hover {
     border-bottom: 2px solid #D94350;
 }
+
+@media screen and (max-width: 390px) {
+    .navlinks a {
+        display: block;
+    }
+}
