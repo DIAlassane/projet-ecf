@@ -26,7 +26,7 @@ function ServicesCard() {
     const totalItems = services.length;
 
   return (
-    <div>
+    <div className='spacebet'>
       <Pagination page={page} setPage={setPage} itemsPerPage={itemsPerPage} totalItems={totalItems} />        
         <div className='nogridserv'>
             {services &&

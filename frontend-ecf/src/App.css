@@ -76,6 +76,43 @@
   width: 19%;
 }
 
+.login {
+  width: 50%;
+  height: 50vh;
+  padding: 1rem;
+  margin-left: 25%;
+  margin-top: 3rem;
+  background-color: #0000004e;
+}
+
+.login h1 {
+  padding: .5rem;
+}
+
+.login input {
+  display: block;
+  padding: .4rem;
+  width: 60%;
+  margin-left: 20%;
+  margin-bottom: .3rem;
+}
+
+.login button {
+  padding: .3rem;
+  background-color: black;
+  color: white;
+  border: 1px solid #0000004e;
+  margin: .5rem;
+  cursor: pointer;
+}
+
+.login a {
+  background-color: #262526;
+  padding: .4rem;
+  color: white;
+  text-decoration: none;
+}
+
 @media screen and (max-width: 390px) {
   .engagement {
     display: none;
@@ -89,6 +126,10 @@
     display: block;
   }
 }
+
+
+
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
