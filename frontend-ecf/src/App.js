@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthContextProvider } from './protection/AuthContext';
+
 import './App.css';
+
 import Cars from './employee/Cars';
 import AddCar from './employee/AddCar';
 import HomeClient from './client/HomeClient';
@@ -21,7 +23,6 @@ import Contactus from './admin/contact/Contactus';
 import { LogBus } from './login/LogBus';
 import { DashboardEmp } from './employee/DashboardEmp';
 import { DashEmployer } from './employee/DashEmployer';
-// import ProtectedRoute from './protection/Protectedroutes';
 
 function App() {
   return (
@@ -29,13 +30,13 @@ function App() {
       <BrowserRouter>
       <AuthContextProvider>
       <Routes>
-      
+
+         {/* Public routes */}
         <Route path='/' element={<HomeClient />} ></Route>
         <Route path='/login' element={<LogBus />} ></Route>
         <Route path='/contact' element={<Contact />} ></Route>
 
-        
-         {/* <Route element={<ProtectedRoute />}> */}
+          {/* Protected routes */}
         <Route path='/cars' element={<Cars />} ></Route>
         <Route path='/addcar' element={<AddCar />} ></Route>
         <Route path='/detailCar/:id' element={<DetailCar />} ></Route>
@@ -53,8 +54,6 @@ function App() {
         <Route path='/contactus' element={<Contactus />} ></Route>
         <Route path='/dashboardemp' element={<DashboardEmp />} ></Route>
         <Route path='/dashemployer' element={<DashEmployer />} ></Route>
-
-          {/* </Route> */}
           
       </Routes>
       </AuthContextProvider>

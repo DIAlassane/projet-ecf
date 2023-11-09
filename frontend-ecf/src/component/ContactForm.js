@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Validation from './Validation';
+import Validation from '../protection/Validation';
 import axios from 'axios';
 
 import '../style/ContactForm.css'
@@ -20,11 +20,6 @@ function ContactForm() {
             return { ...prev, [name]: value }
         });
     }
-
-    // function handleValidation(e) {
-    //     e.preventDefault();
-    //     Validation(values);
-    // }
     
     const handleSubmit = (event) => {
         event.preventDefault();

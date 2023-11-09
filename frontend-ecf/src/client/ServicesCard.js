@@ -10,7 +10,7 @@ function ServicesCard() {
     const navigate = useNavigate();
 
     const [page, setPage] = useState(1);
-    const itemsPerPage = 1; // Nombre d'éléments par page
+    const itemsPerPage = 3; // Nombre d'éléments par page
   
       useEffect(() => {
         axios.get('http://localhost:4000/services')
@@ -40,7 +40,7 @@ function ServicesCard() {
                 <div className='mini-details-card-serv'>
                     <div className="titredesc">
                     <h3>{service.title}</h3>
-                    <p>{service.decriptioncard}</p>
+                    {/* <p>{service.decriptioncard}</p> */}
                     </div>
                     <div className="prixserv">
                         <h4>{service.prix} $</h4>

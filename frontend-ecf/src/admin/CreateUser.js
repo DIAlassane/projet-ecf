@@ -38,7 +38,7 @@ function CreateUser() {
   return (
     <div>
         <div className='ajouter'>
-            <Link to='/'>Retour</Link>
+            <Link to='/users'>Retour</Link>
         <form className='formulaire' onSubmit={Submit} action="">
           <h2 className='titrecu'>Ajouter un utilisateur</h2>
 

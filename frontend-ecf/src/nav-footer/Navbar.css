@@ -11,6 +11,11 @@
     background-color: #262526;
 }
 
+.navbar a {
+    color: white;
+    text-decoration: none;
+}
+
 .navlinks a {
     color: #F2F2F2;
     text-decoration: none;
